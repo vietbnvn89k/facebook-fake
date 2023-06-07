@@ -1,0 +1,919 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+@font-face {
+    font-family: Roboto-black;
+    src: url(./font/Roboto-Black.ttf);
+}
+@font-face {
+    font-family: Roboto-regular;
+    src: url(./font/Roboto-Regular.ttf);
+}
+@font-face {
+    font-family: Roboto-light;
+    src: url(./font/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: Roboto-thin;
+    src: url(./font/Roboto-Thin.ttf);
+}
+
+#home-comments {
+    background-color: #F0F2F5;
+    width: 100%;
+    height: 2000px;
+}
+
+/* --------------------------------header--------------------------------- */
+#header {
+    width: 100%;
+    height: 55px;
+    background: #FFFFFF;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 5;
+    border-bottom: rgba(0, 0, 0, 0.1) solid 1px;
+}
+
+#icon {
+    width: 40px;
+    height: 40px;
+    background: url(./img/avatar.jpg);
+    background-size: cover;
+    left: 20px;
+}
+
+#icon.remove {
+    display: none;
+}
+
+#box-input {
+    display: none;
+    width: 450px;
+    height: 320px;
+    background: #ffffff;
+    position: absolute;
+    left: -90px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 15px 15px;
+    top: 37px;
+}
+
+#box-input.open {
+    display: block;
+    animation: animation-box-input 1s;
+}
+
+@keyframes animation-box-input {
+    0% {width: 240px; height: 35px;}
+    100% {width: 450px; height: 320px;}
+}
+
+#input-header{
+    width: 240px;
+    height: 35px;
+    margin: 0px ;
+    border: none;
+    background: #F0F2F5;
+    margin: 0px 80px;
+    border-radius: 20px;
+}
+
+#input-header.open {
+    width: 330px;
+    animation: animation-input-header 1s;
+}
+
+@keyframes animation-input-header {
+    0% {width: 240px;}
+    100% {width: 330px;}
+}
+
+#arrow {
+    display: none;
+    position: absolute;
+    left: -75px;
+    width: 40px;
+    height: 40px;
+    top: -12px;
+    border-radius: 100%;
+}
+
+#arrow.open {
+    display: block;
+    animation: animation-arrow 1s;
+}
+
+@keyframes animation-arrow {
+    0% {
+        position: absolute;
+        left: -35px;
+    }
+    100% {
+        position: absolute;
+        left: -75px;
+    }
+}
+
+.fa-arrow-left {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+#arrow:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#input-header::placeholder {
+    position: absolute;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.fa-magnifying-glass {
+    font-size: 18px;
+    position: absolute;
+    left: 90px;
+    line-height: 40px;
+}
+
+.icon-header {
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 25px;
+    width: 150px; 
+    cursor: pointer;
+    position: relative;
+    font-weight: lighter;
+}
+
+.icon-header:hover {
+    border-radius: 10px;
+    background-color: #F2F2F2;
+}
+
+.fa-house {
+    text-align: center;
+    padding: 10px 0px;
+    font-size: 25px;
+    width: 150px; 
+    cursor: pointer;
+    position: relative;
+    font-weight: lighter;
+    color:#1B74E4;
+}
+
+.fa-house::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:#1B74E4;
+}
+
+.recommend {
+    opacity: 0;
+    position: absolute;
+    background-color: #383839;
+    width: 70px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 20px;
+    bottom: -25px;
+    border-radius: 10px;
+    
+}
+
+#Part2-header i:hover .recommend {
+    animation: opacityOn 1s normal forwards;
+    animation-delay: 1s;
+}
+
+.recommend h5 {
+    line-height: 20px;
+    color: white;
+    font-family: Roboto-light;
+    font-size: 12px;
+}
+
+@keyframes opacityOn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* .icon-header::after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.fa-house::after {
+    background-color:crimson;
+}
+.fa-tv::after {
+    background-color:tomato;
+}
+.fa-store::after {
+    background-color:magenta;
+}
+.fa-users-rectangle::after {
+    background-color: #1B74E4;
+} */
+
+/* --------------------------------comment.html------------------------------------------ */
+#content {
+    display: flex;
+    width: 100%;
+    height: 650px;
+    top: 70px;
+    position: relative;
+    font-family: Roboto-light;
+    background-color: #F0F2F5;
+}
+
+/* ----------------------------------part1--------------------------------- */
+#Part-1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #F0F2F5;
+}
+
+#toolbar > a > li h4 {
+    font-size: 18px;
+    line-height: 40px;
+    position: relative;
+    left: 60px;
+    color: #181821;
+}
+
+#toolbar a {
+    text-decoration: none;
+}
+
+#toolbar li:hover {
+    background-color: #E4E6E9;
+}
+
+#toolbar i {
+    font-size: 20px;
+    position: absolute;
+    margin: 10px 15px;
+}
+
+.fa-user-group {
+    color: rgb(0, 174, 255);
+}
+
+.fa-people-group {
+    color:crimson;
+}
+
+.fa-clock-rotate-left {
+    color: rgb(95, 95, 95);
+}
+
+.fa-film {
+    color: darkgoldenrod;
+}
+
+.fa-angles-down {
+    color:purple;
+}
+
+#toolbar {
+    border-bottom:#CED0D4 solid 2px;
+    width: 305px;
+}
+
+.avatar {
+    position: absolute;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+#avatar-toolbar {
+    width: 35px;
+    height: 35px;
+    margin: 2.5px 10px;
+    background: url(./img/avatar.jpg);
+    background-size: cover;
+}
+
+#Group h2 {
+    padding: 10px 0px 0px 15px;
+    font-family: Roboto-regular;
+    font-size: 17px;
+    color: #7F8285;
+}
+
+#Group li:hover{
+    background-color: #E4E6E9;
+}
+
+#Group a {
+    text-decoration: none;
+}
+
+#Group h4 {
+    color: black;
+    margin: 0px 65px;
+    line-height: 50px;
+}
+
+.avatar-group {
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    background-size: cover;
+    position: absolute;
+    margin: 5px 0px 0px 10px;
+}
+
+#avatar-group-1 {
+    background-image: url(./img/f8.jpg);
+}
+
+#avatar-group-2 {
+    background-image: url(./img/hội\ thất\ nghiệp.jpg);
+}
+
+#avatar-group-3 {
+    background-image: url(./img/font-end.jpg);
+}
+
+/* ----------------------------------part2--------------------------------- */
+#Part-2 {
+    flex: 2;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    
+}
+/* -------------------------part-new1------------------------------- */
+#news {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 15px;
+    position: relative;
+    top: 30px;
+    background-color: #FFFFFF;
+}
+
+#Part1-news > li {
+    display: inline-block;
+    text-align: center;
+    line-height: 60px;
+    background-color: #FFFFFF;
+    height: 60px;
+    width: 200px;
+    margin: 0px 2px;
+    position: relative;
+    top: 5px;
+    font-family: Roboto-black;  
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#Part1-news > li:hover {
+    background-color: #F2F2F2;
+}
+
+.new-part1::after {
+    left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    width: 80%;
+    height: 4px;
+}
+
+#new-open::after {
+    background-color: aqua;
+}
+
+#reels-open::after {
+    background-color: greenyellow;
+}
+
+#meeting-open::after {
+    background-color: bisque;
+}
+
+#new-open.remove::after,
+#reels-open.remove::after,
+#meeting-open.remove::after {
+    transform: translateX(-50%) translateY(-4px);
+    transition: 1s ease;
+}
+
+#new-open.open::after,
+#reels-open.open::after,
+#meeting-open.open::after {
+    transform: translateX(-50%) translateY(4px);
+    transition: 1s ease;
+}
+
+.fa-book-open.open {
+    color: orange;
+}
+
+.fa-clapperboard.open {
+    color: red;
+}
+
+.fa-video.open {
+    color: rebeccapurple;
+}
+/* -------------------------part-new2------------------------------- */
+#tin {
+    width: 100%;
+    height: 230px;
+    display: flex;
+}
+
+#tin.remove {
+    display: none;
+}
+
+.new {
+    width: 150px;
+    height: 200px;
+    position: relative;
+    top: 20px;
+    margin: 0px 5px;
+    background-color: black;
+    border-radius: 23px;
+    border: #ccc 2px solid;
+    overflow: hidden;
+}
+
+.new:hover::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+.new:hover #avatar-new-1 {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+#avatar-new-1 {
+    width: 100%;
+    height: 70%;
+    background: url(./img/avatar.jpg);
+    background-size: cover;
+}
+
+.avatar1 {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    left: 5px;
+    background-size: cover;
+    border: 4px solid #166ADA;
+}
+
+.video {
+    width: 150px;
+    height: 200px;
+}
+
+.name {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    color: white;
+    text-decoration:underline;
+}
+
+#avatar-2 {
+    background: url(./img/avatar-user-4.jpg);
+    background-size: cover;
+}
+
+#avatar-3 {
+    background: url(./img/avatar-user-1.jpg);
+    background-size: cover;
+}
+
+#avatar-4 {
+    background: url(./img/avatar-user-3.jpg);
+    background-size: cover;
+}
+
+.avatar-new {
+    border-radius: 20px 20px 0px 0px;
+}
+
+.infomation-new {
+    width: 100%;
+    height: 30%;
+    background-color: white;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.infomation-new h4 {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 5px;
+}
+
+#box-fa-flus {
+    position: absolute;
+    border: white 5px solid;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+    background-color: rgb(0, 132, 255);
+    cursor: pointer;
+}
+
+.fa-plus {
+    color: white;
+    font-size: 33px;
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+}
+
+#reels {
+    display: none;
+    width: 100%;
+    height: 230px;
+}
+
+#reels.open {
+    display: block;
+}
+
+#phonghopmat {
+    display: none;
+    padding: 50px 0px;
+    text-align: center;
+}
+
+#phonghopmat.open {
+    display: block;
+}
+
+#suggest {
+    width: 99,5%;
+    height: 125px;
+    background-color: white;
+    position: relative;
+    top: 50px;
+    border: #ccc 1px solid;
+    border-radius: 15px;
+}
+
+#Part1-suggest {
+    width: 100%;
+    height: 50%;
+}
+
+#Part1-suggest input {
+    width: 560px;
+    height: 45px;
+    border-radius: 50px;
+    border: none;
+    background-color: #f1f1f1;
+    float: right;
+    margin: 10px 40px;
+}
+
+#Part1-suggest input:hover {
+    background-color: #E4E6E9;
+}
+
+#Part1-suggest input::placeholder {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    font-size: 18px;
+    transform: translate(0, -50%);
+    font-family: Roboto-light;
+}
+
+#Part2-suggest {
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+.fa-file-video {
+    color: #E42645;
+}
+
+.fa-images {
+    color: #41B35D;
+}
+.fa-face-laugh {
+    color: #EAB026;
+}
+
+.icon-suggest {
+    display: flex;
+    flex: 1;
+    width: 100px;
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+    justify-content: space-evenly;
+}
+
+.icon-suggest i {
+    font-size: 25px;
+}
+
+.icon-suggest:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#avatar-suggest {
+    background: url(./img/avatar.jpg);
+    background-size: cover;
+    margin: 10px;
+    width: 45px;
+    height: 45px;
+}
+
+#posts {
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    border: solid 1px #CED0D4;
+    position: relative;
+    top: 70px;
+    border-radius: 15px;
+}
+
+#Part2-suggest div {
+    cursor: pointer;
+}
+
+#Part2-suggest i {
+    position: relative;
+    left: 15px;
+}
+
+#Part2-suggest h4 {
+    position: relative;
+    left: -20px;
+}
+
+#Part1-posts {
+    height: 10%;
+    width: 100%;
+    display: flex;
+}
+
+#avatar-posts-1 {
+    background: url(./img/avatar-post.jpg);
+    width: 45px;
+    height: 45px;
+    background-size: cover;
+    top: 5px;
+    left: 15px;
+}
+
+#infomation-posts {
+    position: absolute;
+    left: 65px;
+    top: 10px;
+}
+
+.fa-xmark {
+    font-size: 30px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+#Part2-posts {
+    height: 10%;
+    width: 100%;
+    margin: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#Part2-posts h6 {
+    color: rgb(34, 164, 250);
+    font-size: 13px;
+}
+
+#Part3-posts {
+    background: url(./img/image-posts.jpg);
+    background-size: cover;
+    height: 60%;
+    width: 100%;
+}
+
+#Part4-posts {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    border-radius: 0px 0px 0px 0px;
+}
+
+#like,#comment,#share {
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#like:hover,#comment:hover,#share:hover {
+    background-color: #7F8285;
+}
+
+#like h4,#share h4 {
+    font-size: 20px;
+    position: relative;
+    left: -20px;
+}
+
+#like i,#share i {
+    position: relative;
+    font-size: 25px;
+    left: 20px;
+}
+
+#comment h4 {
+    font-size: 20px;
+    position: relative;
+    left: -20px;
+}
+#comment i {
+    position: relative;
+    font-size: 25px;
+    left: 10px;
+}
+
+#Part5-posts {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+#Part5-posts input {
+    width: 580px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    border-radius: 20px;
+    background-color: #eeeeee;
+    border: none;
+}
+
+#Part5-posts input:hover {
+    background-color: #ccc;
+}
+
+#Part5-posts input::placeholder {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 20px;
+    font-size: 18px;
+    font-family: Roboto-light;
+}
+
+#avatar-posts-2 {
+    width: 40px;
+    height: 40px;
+    background: url(./img/avatar.jpg);
+    background-size: cover;
+    position: absolute;
+    left: 20px;
+}
+/* ----------------------------------part3--------------------------------- */
+#Part-3 {
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #F0F2F5;
+    position: relative;
+}
+
+#ads {
+    width: 100%;
+    height: 150px;
+}
+
+#ads > h4 {
+    width: 275px;
+    float: right;
+    font-size: 20px;
+    padding: 15px 10px;
+}
+
+#ads-2 {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+#ads-2 div {
+    height: 100%;
+    width: 80px;
+    background: url(./img/ads-1.jpg);
+    background-size: cover;
+}
+
+#ads-2 h4 {
+    font-size: 20px;
+    position: absolute;
+    left: 100px;
+    top: 40%;
+    transform: translateY(-50);
+}
+
+#contact {
+    border-top: rgb(204, 204, 204) 1px solid;
+    float: right;
+    width: 100%;
+    height: 300px;
+}
+
+#lienhe li {
+    display: inline-block;
+}
+
+#contact i {
+    margin: 0px 10px;
+}
+
+#contact li h4 {
+    font-size: 18px;
+    margin: 10px 50px 0px 50px;
+}
+
+#contact > li > h4 {
+    margin: 20px 0px 0px 100px;
+
+}
+
+
+#avatar-user-1 {width: 35px; height: 35px; background: url(./img/avatar-user-1.jpg); background-size: cover; position: absolute; margin-left: -50px; margin-top: -6px;}
+#avatar-user-2 {width: 35px; height: 35px; background: url(./img/avatar-user-2.jpg); background-size: cover; position: absolute; margin-left: -50px; margin-top: -6px;}
+#avatar-user-3 {width: 35px; height: 35px; background: url(./img/avatar-user-3.jpg); background-size: cover; position: absolute; margin-left: -50px; margin-top: -6px;}
+#avatar-user-4 {width: 35px; height: 35px; background: url(./img/avatar-user-4.jpg); background-size: cover; position: absolute; margin-left: -50px; margin-top: -6px;}
+
+#avatar-user-1::after,
+#avatar-user-2::after,
+#avatar-user-3::after,
+#avatar-user-4::after {
+    content: '';
+    background-color: #31A24C;
+    position: absolute;
+    bottom: -0px;
+    right: -0px;
+    border: solid white 1px;
+    border-radius: 100%;
+    width: 7px;
+    height: 7px;
+}
